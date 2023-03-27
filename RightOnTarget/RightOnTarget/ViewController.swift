@@ -8,59 +8,55 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //сущность "Игра"
+    var game: Game!
+    
+    // элементы на сцене
     @IBOutlet var slider: UISlider!
     @IBOutlet var label: UILabel!
-
-    //загаданное число
-    var number: Int = 0
-    //раунд
-    var round: Int = 0
-    //сумма очков за раунд
-    var points: Int = 0
     
-    @IBAction func checkNumber() {
-        //если игра только начинается
-        if self.round == 0 {
-            //генерируем случайное число
-            self.number = Int.random(in: 1...50)
-            //передаем значение случайного числа в label
-            self.label.text = String(self.number)
-            //устанавливаем счетчик раундов на 1
-            self.round = 1
-        } else {
-            //получаем значение на слайдере
-            let numSlider = Int(self.slider.value.rounded())
-            //сравниваем значение с загаданным и подсчитываем очки
-            if numSlider > self.number {
-                self.points += 50 - numSlider + self.number
-            } else if numSlider < self.number {
-                self.points += 50 - self.number + numSlider
-            } else {
-                self.points += 50
-            }
-            if self.round == 5 {
-                //выводим информационное окно с результатами игры
-                let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(self.points) очков", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Начать заново", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                self.round = 1
-                self.points = 0
-            } else {
-                self.round += 1
-            }
-            //генерируем случайное число
-            self.number = Int.random(in: 1...50)
-            //передаем значение случайного числа в label
-            self.label.text = String(self.number)
-        }
-    }
+    //MARK: - Жизненный цикл
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        //создаем экземпляр сущности "Игра"
+        game = Game(startValue: 1, endValue: 50, rounds: 5)
+        //обновляем данные о текущем значении загаданного числа
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
     }
 
+    //MARK: - Взаимодействие View - Model
+    
+    //проверка выбранного пользователем числа
 
+    @IBAction func checkNumber() {
+        //высчитываем очки за раунд
+        game.calculateScore(with: Int(slider.value))
+        //проверяем окончена ли игра
+        if game.isGameEnded {
+            showAlertWith(score: game.score)
+            //начинаем игру заново
+            game.restartGame()
+        } else {
+            game.startNewRound()
+        }
+        //обновляем данные о текущем значении загаданного числа
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
+    }
+    
+    //MARK: - обновление View
+    
+    //обновление текста загаданного числа
+    private func updateLabelWithSecretNumber(newText: String) {
+        label.text = newText
+    }
+    
+    //отображаем всплывающее окно
+    private func showAlertWith(score: Int) {
+        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(score) очков", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Начать заново", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

@@ -14,6 +14,7 @@
 		903430A129CD94FA00E8F6B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 903430A029CD94FA00E8F6B1 /* Assets.xcassets */; };
 		903430A429CD94FA00E8F6B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903430A229CD94FA00E8F6B1 /* LaunchScreen.storyboard */; };
 		903430AC29CDA15000E8F6B1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 903430AB29CDA14F00E8F6B1 /* .gitignore */; };
+		90AEFA5329D21A73008518D3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEFA5229D21A73008518D3 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		903430A329CD94FA00E8F6B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		903430A529CD94FA00E8F6B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903430AB29CDA14F00E8F6B1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		90AEFA5229D21A73008518D3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		9034309629CD94F600E8F6B1 /* RightOnTarget */ = {
 			isa = PBXGroup;
 			children = (
+				903430AF29D2193F00E8F6B1 /* Model */,
 				9034309729CD94F600E8F6B1 /* AppDelegate.swift */,
 				9034309929CD94F600E8F6B1 /* SceneDelegate.swift */,
 				9034309B29CD94F600E8F6B1 /* ViewController.swift */,
@@ -68,6 +71,14 @@
 				903430A529CD94FA00E8F6B1 /* Info.plist */,
 			);
 			path = RightOnTarget;
+			sourceTree = "<group>";
+		};
+		903430AF29D2193F00E8F6B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90AEFA5229D21A73008518D3 /* Game.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AEFA5329D21A73008518D3 /* Game.swift in Sources */,
 				9034309C29CD94F600E8F6B1 /* ViewController.swift in Sources */,
 				9034309829CD94F600E8F6B1 /* AppDelegate.swift in Sources */,
 				9034309A29CD94F600E8F6B1 /* SceneDelegate.swift in Sources */,
@@ -302,7 +314,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.RightOnTarget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -329,7 +341,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.RightOnTarget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
